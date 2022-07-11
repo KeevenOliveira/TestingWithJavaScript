@@ -1,0 +1,24 @@
+{
+  "name": "testingwithjavascript",
+  "version": "1.0.0",
+  "description": "This repository is to practice about TDD✅",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KeevenOliveira/TestingWithJavaScript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KeevenOliveira/TestingWithJavaScript/issues"
+  },
+  "homepage": "https://github.com/KeevenOliveira/TestingWithJavaScript#readme",
+  "devDependencies": {
+    "@types/jest": "^28.1.4",
+    "jest": "^28.1.2"
+  }
+}
