@@ -11,3 +11,6 @@ module.exports.queryString = obj => {
 
   return keys.join('&');
 };
+
+module.exports.parse = string =>
+  Object.fromEntries(string.split('&').map(item => item.split('=')));
