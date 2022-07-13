@@ -1,5 +1,11 @@
-module.exports.queryString = (obj) => {
-  const keys = Object.keys(obj).map((key) => `${key}=${obj[key]}`);
+module.exports.queryString = obj => {
+  const keys = Object.entries(obj).map(([key, value]) => {
+    if (typeof value === 'object' && !Array.isArray(value)) {
+      throw new Error('Objects are not allowed as values');
+    }
 
-  return keys.join("&");
+    return `${key}=${value}`;
+  });
+
+  return keys.join('&');
 };
