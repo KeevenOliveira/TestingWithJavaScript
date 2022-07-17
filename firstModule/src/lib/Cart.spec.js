@@ -94,5 +94,28 @@ describe('Cart', () => {
         }
       `);
     });
+
+    it('should reset the cart when checkout() is called', () => {
+      cart.addItem({
+        product: productSecond,
+        quantity: 3,
+      });
+
+      cart.checkout();
+
+      expect(cart.getTotal()).toEqual(0);
+    });
+
+    it('should return an object with the total and the list of items when summary() is called', () => {
+      cart.addItem({
+        product: productSecond,
+        quantity: 3,
+      });
+
+      cart.summary();
+
+      expect(cart.summary()).toMatchSnapshot();
+      expect(cart.getTotal()).toBeGreaterThan(0);
+    });
   });
 });

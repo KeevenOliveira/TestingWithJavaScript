@@ -1,5 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Cart checkout() should return an object with the total and the list of items when summary() is called 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "product": Object {
+        "price": 1000000,
+        "title": "Macbook Pro M2",
+      },
+      "quantity": 3,
+    },
+  ],
+  "total": 3000000,
+}
+`;
+
 exports[`Cart checkout() should return an object with the total and the list of items: 
         Object {
           "items": Array [
