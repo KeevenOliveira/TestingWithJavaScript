@@ -134,5 +134,19 @@ describe('Cart', () => {
 
       expect(cart.getTotal().getAmount()).toEqual(1470000);
     });
+
+    it('should apply quantity discount for even quantities', () => {
+      const condition = {
+        quantity: 2,
+      };
+
+      cart.addItem({
+        product,
+        quantity: 4,
+        condition,
+      });
+
+      expect(cart.getTotal().getAmount()).toEqual(1400000);
+    });
   });
 });
