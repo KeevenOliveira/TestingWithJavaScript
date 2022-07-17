@@ -18,7 +18,7 @@ describe('Cart', () => {
 
   describe('getTotal()', () => {
     it('should return 0 when getTotal() is executed in a newly created instance', () => {
-      expect(cart.getTotal()).toEqual(0);
+      expect(cart.getTotal().getAmount()).toEqual(0);
     });
 
     it('should multiply quantity and price and receive the total amount', () => {
@@ -28,7 +28,7 @@ describe('Cart', () => {
       };
 
       cart.addItem(item);
-      expect(cart.getTotal()).toEqual(1400000);
+      expect(cart.getTotal().getAmount()).toEqual(1400000);
     });
 
     it('should ensure no more than on product exists', () => {
@@ -41,7 +41,7 @@ describe('Cart', () => {
         product,
         quantity: 1,
       });
-      expect(cart.getTotal()).toEqual(700000);
+      expect(cart.getTotal().getAmount()).toEqual(700000);
     });
 
     it('should update total when a product gets included and then remove', () => {
@@ -56,7 +56,7 @@ describe('Cart', () => {
       });
 
       cart.remove(product);
-      expect(cart.getTotal()).toEqual(1000000);
+      expect(cart.getTotal().getAmount()).toEqual(1000000);
     });
   });
 
@@ -103,7 +103,7 @@ describe('Cart', () => {
 
       cart.checkout();
 
-      expect(cart.getTotal()).toEqual(0);
+      expect(cart.getTotal().getAmount()).toEqual(0);
     });
 
     it('should return an object with the total and the list of items when summary() is called', () => {
@@ -115,7 +115,24 @@ describe('Cart', () => {
       cart.summary();
 
       expect(cart.summary()).toMatchSnapshot();
-      expect(cart.getTotal()).toBeGreaterThan(0);
+      expect(cart.getTotal().getAmount()).toBeGreaterThan(0);
+    });
+  });
+
+  describe('special conditions', () => {
+    it('should apply percentage discount quantity above minimum is passed', () => {
+      const condition = {
+        percentage: 30,
+        minimum: 2,
+      };
+
+      cart.addItem({
+        product,
+        quantity: 3,
+        condition,
+      });
+
+      expect(cart.getTotal().getAmount()).toEqual(1470000);
     });
   });
 });
