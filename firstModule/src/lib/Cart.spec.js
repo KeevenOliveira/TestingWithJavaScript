@@ -188,5 +188,23 @@ describe('Cart', () => {
 
       expect(cart.getTotal().getAmount()).toEqual(700000);
     });
+
+    it('should receive two of more conditions and determine/apply the best discount. First case.', () => {
+      const condition1 = {
+        percentage: 30,
+        minimum: 2,
+      };
+      const condition2 = {
+        quantity: 2,
+      };
+
+      cart.addItem({
+        product,
+        quantity: 5,
+        condition: [condition1, condition2],
+      });
+
+      expect(cart.getTotal().getAmount()).toEqual(2100000);
+    });
   });
 });
