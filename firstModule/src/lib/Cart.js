@@ -78,9 +78,13 @@ export default class Cart {
   }
 
   summary() {
+    const total = this.getTotal();
+    const formatted = total.toFormat('$0,0.00');
+    const items = this.items;
     return {
-      total: this.getTotal().getAmount(),
-      items: this.items,
+      total,
+      formatted,
+      items,
     };
   }
 
@@ -90,7 +94,7 @@ export default class Cart {
     this.items = [];
 
     return {
-      total,
+      total: total.getAmount(),
       items,
     };
   }

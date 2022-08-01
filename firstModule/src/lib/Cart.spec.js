@@ -117,6 +117,19 @@ describe('Cart', () => {
       expect(cart.summary()).toMatchSnapshot();
       expect(cart.getTotal().getAmount()).toBeGreaterThan(0);
     });
+    it('should include formatted in the summary', () => {
+      cart.addItem({
+        product,
+        quantity: 5,
+      });
+
+      cart.addItem({
+        product: productSecond,
+        quantity: 3,
+      });
+
+      expect(cart.summary().formatted).toEqual('R$65,000.00');
+    });
   });
 
   describe('special conditions', () => {
