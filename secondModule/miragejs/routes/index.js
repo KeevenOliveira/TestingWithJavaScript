@@ -1,3 +1,5 @@
+// import { Response } from 'miragejs';
+
 /*
  * Mirage JS guide on Routes: https://miragejs.com/docs/route-handlers/functions
  */
@@ -11,6 +13,9 @@ export default function routes() {
    * Mirage JS guide on Resource: https://miragejs.com/docs/route-handlers/shorthands#resource-helper
    */
   this.resource('users');
+  // this.get('products', () => {
+  //   return new Response(500, {}, 'O server morreu');
+  // });
   this.resource('products');
 
   /*
