@@ -18,7 +18,6 @@ export default function Search({ doSearch }) {
 
   return (
     <form
-      data-testId="search"
       onSubmit={submitHandler}
       name="search-form"
       className="relative mt-6 max-w-lg mx-auto"
