@@ -1,6 +1,7 @@
 import Search from "./search";
 
 import { fireEvent, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 const doSearch = jest.fn();
 
@@ -18,5 +19,30 @@ describe("Search", () => {
     await fireEvent.submit(form);
 
     expect(doSearch).toHaveBeenCalledTimes(1);
+  });
+
+  it("should render a input type equals search", () => {
+    render(<Search doSearch={doSearch} />);
+
+    expect(screen.getByRole("searchbox")).toHaveProperty("type", "search");
+  });
+
+  it("should call props.doSearch() with the user input", async () => {
+    render(<Search doSearch={doSearch} />);
+
+    const inputText = "some text here";
+
+    const form = screen.getByRole("form");
+
+    const input = screen.getByRole("searchbox");
+    screen.debug();
+
+    await userEvent.type(input, inputText);
+
+    await fireEvent.submit(form);
+
+    screen.debug();
+
+    expect(doSearch).toHaveBeenCalledWith(inputText);
   });
 });
