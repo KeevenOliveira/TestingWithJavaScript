@@ -1,6 +1,6 @@
 export default function ProductCard({ product, addToCart }) {
   return (
-    <section data-testid="product-card">
+    <section data-testId="product-card">
       <div className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
         <div
           data-testid="image"
