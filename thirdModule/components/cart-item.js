@@ -1,4 +1,4 @@
-import { useCartStore } from '../store/cart';
+import { useCartStore } from "../store/cart";
 
 export default function CartItem({ product }) {
   const { remove, increase, decrease } = useCartStore((store) => store.actions);
