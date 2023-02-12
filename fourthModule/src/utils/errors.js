@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import createError from 'http-errors';
 import { StatusCodes } from 'http-status-codes';
 import { logger } from '@/utils';
