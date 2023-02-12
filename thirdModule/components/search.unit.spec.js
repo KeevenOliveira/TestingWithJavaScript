@@ -35,13 +35,10 @@ describe("Search", () => {
     const form = screen.getByRole("form");
 
     const input = screen.getByRole("searchbox");
-    screen.debug();
 
     await userEvent.type(input, inputText);
 
     await fireEvent.submit(form);
-
-    screen.debug();
 
     expect(doSearch).toHaveBeenCalledWith(inputText);
   });
