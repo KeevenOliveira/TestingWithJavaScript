@@ -1,6 +1,5 @@
-import { appError } from '@/utils';
 import { Order } from '@/database/models/order.model';
-import { logger } from '@/utils';
+import { logger, appError } from '@/utils';
 
 export async function listOrders(userid) {
   try {
@@ -30,6 +29,7 @@ export async function saveOrder(data) {
   if (!data) {
     return Promise.reject(appError('Failed to save order'));
   }
-  logger.info(`New order saved`, { data });
-  return await Order.create(data);
+  logger.info('New order saved', { data });
+  const order = await Order.create(data);
+  return order;
 }
