@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import createError from 'http-errors';
 import { StatusCodes } from 'http-status-codes';
 import { appError } from './errors';
