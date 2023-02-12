@@ -11,6 +11,10 @@ describe('user.middleware', () => {
     `${ReasonPhrases.UNPROCESSABLE_ENTITY}: header should contain a valid email`,
   );
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should forward an error when an email is NOT provided in the headers', () => {
     const req = buildReq({
       headers: {},
